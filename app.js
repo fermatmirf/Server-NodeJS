@@ -10,7 +10,11 @@ var MONGOURL = 'mongodb://localhost:27017/Curso_mean_social';
 //cargar rutas
 var user_routes = require('./routes/user');
 var follow_routes = require('./routes/follow');
-
+var cancha_routes = require('./routes/cancha');
+var establecimiento_routes = require('./routes/establecimiento');
+var dueno_routes = require('./routes/dueno');
+var persona_routes = require('./routes/persona');
+var turno_routes = require('./routes/turno');
 //middlewares
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
@@ -40,17 +44,11 @@ app.get('/',(req,res) => {
 });
 app.use('/api',user_routes);
 app.use('/api',follow_routes);
-
-/*app.get('/', (req,res) =>{
-    res.status(200).send({
-        message: 'Hola mundo desde el servidor de NodeJS'
-    });
-});
-app.get('/pruebas', (req,res) =>{
-    res.status(200).send({
-        message: 'Acción de pruebas en el servidor de NodeJS'
-    });
-});*/
+app.use('/api',cancha_routes);
+app.use('/api',establecimiento_routes);
+app.use('/api',dueno_routes);
+app.use('/api',persona_routes);
+app.use('/api',turno_routes);
 
 //exportar
 module.exports = app;
