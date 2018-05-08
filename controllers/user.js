@@ -4,6 +4,7 @@ var mongoosePaginate = require('mongoose-pagination');
 var fs = require('fs');
 var path = require('path');
 
+var Follow = require('../models/follow');
 var User = require('../models/user');
 var jwt = require('../services/jwt');
 
@@ -115,7 +116,9 @@ function getUser(req, res){
     User.findById(userId,(err, user) =>{
         if(err) return res.status(500).send({message: 'Error en la petición'});
         if(!user) return res.status(404).send({message: 'El usuario no existe'});
-        return res.status(200).send({user});
+        Follow.findOne({"user":req.user.sub, "followed": userId}).exec((err, follow) => {
+            return res.status(200).send({user, follow});    
+        });
     });
 
 }
