@@ -18,7 +18,7 @@ var turno_routes = require('./routes/turno');
 //middlewares
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
-app.use(session({
+/* app.use(session({
     secret: "asd123",
     resave: true,
     saveUninitialized: true,
@@ -26,7 +26,7 @@ app.use(session({
         url: MONGOURL,
         autoReconnect: true
     })
-}));
+})); */
 
 //cors
 app.use((req, res, next) => {
@@ -38,10 +38,10 @@ app.use((req, res, next) => {
 	next();
 });
 //rutas
-app.get('/',(req,res) => {
+/* app.get('/',(req,res) => {
     req.session.cuenta = req.session.cuenta ? req.session.cuenta + 1 : 1; 
     res.send(`Hola hsas visto esta pagina: ${req.session.cuenta}`)
-});
+}); */
 app.use('/api',user_routes);
 app.use('/api',follow_routes);
 app.use('/api',cancha_routes);
