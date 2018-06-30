@@ -15,6 +15,7 @@ var establecimiento_routes = require('./routes/establecimiento');
 var dueno_routes = require('./routes/dueno');
 var persona_routes = require('./routes/persona');
 var turno_routes = require('./routes/turno');
+var segurinf_routes = require('./routes/seguinforeq');
 //middlewares
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
@@ -43,6 +44,7 @@ app.use((req, res, next) => {
     res.send(`Hola hsas visto esta pagina: ${req.session.cuenta}`)
 }); */
 app.use('/api',user_routes);
+app.use('/api',segurinf_routes);
 app.use('/api',follow_routes);
 app.use('/api',cancha_routes);
 app.use('/api',establecimiento_routes);
