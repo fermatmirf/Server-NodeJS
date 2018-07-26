@@ -16,6 +16,10 @@ var dueno_routes = require('./routes/dueno');
 var persona_routes = require('./routes/persona');
 var turno_routes = require('./routes/turno');
 var segurinf_routes = require('./routes/seguinforeq');
+var tematica_routes = require('./routes/tematica');
+var organizador_routes = require('./routes/organizador');
+var jornada_routes = require('./routes/jornada');
+var expositor_routes = require('./routes/expositor');
 //middlewares
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
@@ -47,6 +51,10 @@ app.use('/api',user_routes);
 app.use('/api',segurinf_routes);
 app.use('/api',follow_routes);
 app.use('/api',cancha_routes);
+app.use('/api', tematica_routes);
+app.use('/api', organizador_routes);
+app.use('/api', jornada_routes);
+app.use('/api',expositor_routes)
 app.use('/api',establecimiento_routes);
 app.use('/api',dueno_routes);
 app.use('/api',persona_routes);
